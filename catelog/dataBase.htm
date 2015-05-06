@@ -1,0 +1,1209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<!--
+		New Perspectives on JavaScript, 2nd Edition
+		Tutorial 7
+		Tutorial Case
+
+		Filename:         usconst.htm
+		Supporting files: history.css, hlogo.jpg, print.css, print.jpg,
+		toc.css, toc.js, web.jpg
+		Author : Hou, Tiejun
+		Student-ID : 1348283
+		Course : Internet-II
+		Section :
+		Date : 05/04/2015
+		Chapter 7 Tutorial
+		-->
+
+		<title>The Constitution of the United States</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="shblog.css" rel="stylesheet" type="text/css" />
+		<script src = "menus.js" type="text/javascript"></script>
+		<link type="text/css" title="Web" href="web.css" rel="stylesheet" />
+		<script src = "toc.js" type = "text/javascript"></script>
+
+	</head>
+
+	<body>
+		<div id="menu1" class="menu">
+			<a href="#">Java Script</a>
+		</div>
+		<div id="menu1List" class="menuList">
+			<ul>
+				<li>
+					<a href="javaScript.htm">Javascript final project</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu2" class="menu">
+			<a href="#">Operating System</a>
+		</div>
+		<div id="menu2List" class="menuList">
+			<ul>
+				<li>
+					<a href="os1.htm">Assignment 2</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu3" class="menu">
+			<a href="#">Database</a>
+		</div>
+		<div id="menu3List" class="menuList">
+			<ul>
+				<li>
+					<a href="dataBase.htm">DataBase design</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu4" class="menu">
+			<a href="#">Datastructure</a>
+		</div>
+		<div id="menu4List" class="menuList">
+			<ul>
+				<li>
+					<a href="dataStructure.htm">Assignment 1</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu5" class="menu">
+			<a href="#">Linux</a>
+		</div>
+		<div id="menu5List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Linux tips</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu6" class="menu">
+			<a href="#">Eclipse</a>
+		</div>
+		<div id="menu6List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Eclipse tips</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu7" class="menu">
+			<a href="#">Java</a>
+		</div>
+		<div id="menu7List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Thinking in Java</a>
+				</li>
+			</ul>
+		</div>
+		<div id="close">
+			<div id="toc"></div>
+
+			<div id="doc">
+			
+			
+			<h1 id="chapter1">chapter1</h1><h3 id="surrogatekey">surrogate key</h3>
+		<p>
+			什么是surrogate key?
+			<br/>
+			在数据库的表设计中，通常大家都会将一些必须的信息设计到表当中去，比如一个USER表，那么user_name, user_address可能就是必须的信息，为了表示表数据的唯一性，可能会使用user_name当作primary key。
+			<br/>
+			这种设计很常见很普遍，但是却会有一些潜在的问题，那就是如果想对user_name做修改的话，那么将变得比较困难，因为user_name有可能是其他的表中的foreign key, 这样不仅需要修改本表中的user_name, 还需要修改其他表中的user_name。
+		</p>
+		<p>
+			如果在表的设计中增加一个附加的字段user_id, 并把它做为primary key, 那么我们再修改user_name的时候，就不会出现刚才所说的那些问题了。
+		</p>
+		<p>
+			这里user_id就是所谓的surrogate key.
+			<br/>
+			Timon向老师请教得到的两点心得：
+		</p>
+		<ol>
+			<li>
+				surrogate key 一定是随机的，不能有意义，也就是说，加拿大人的sin number 不是surrogate key,因为，这9位数字是有意义的。
+			</li>
+			<li>
+				composite key:这种组合键的用途是:在多对多的两张或多张表中,需要使用中间表把它们表示成多对一关系才能处理，而中间表是由多组外键组成，于是，中间表的primary key 就是由composite key构成。
+			</li>
+		</ol>
+		<p>
+			e. 在scott用户下运行dorp_table.sql文件，删除scott用户下所有的表。SQLPLUS &gt; @ c:\dorp_table.sql。
+		</p>
+		<p>
+			在上面的操作中，在生成的脚本文件中会有多余的字符，如运行的SQL语句，标题，或返回的行数，需要我们编辑该脚本后再运行，给实际的操作带来诸多不便。懒惰是人的本性，这促使我们用
+		</p><h4 id="h4-2">法二：更简单的办法来实现上面的任务。</h4>
+		<p>
+			a. 创建gen_drop_table.sql文件，包含如下语句：
+		</p>set echo off
+		set feedback off
+		set newpage none
+		set pagesize 5000
+		set linesize 500
+		set verify off
+		set pagesize 0
+		set term off
+		set trims on
+		set linesize 600
+		set heading off
+		set timing off
+		set verify off
+		set numwidth 38
+		SPOOL c:\drop_table.sql
+		SELECT &#8216;DROP TABLE &#8217;|| table_name ||&#8216;;&#8217; FROM user_tables;
+		SPOOL OFF
+		b. 以SCOTT用户登录数据库：SQLPLUS &gt; @ …..\gen_dorp_table.sql。
+		<p>
+			c. 在c盘根目录下会生成文件drop_table.sql文件，包含删除所有表的语句，如下所示:
+		</p>
+		<p>
+			DROP TABLE DEPT;
+			<br/>
+			DROP TABLE EMP;
+			<br/>
+			DROP TABLE PARENT;
+			<br/>
+			DROP TABLE STAT_VENDER_TEMP;
+			<br/>
+			DROP TABLE TABLE_FORUM;
+			<br/>
+			d. 在scott用户下运行dorp_t：
+		</p>
+		<p>
+			able.sql文件，删除scott用户下所有的表。SQLPLUS &gt; @ c:\dorp_table.sql
+		</p><h3 id="h3-3">将一个表中的数据导出生成一个文本文件，列与列之间以”,”隔开：</h3>
+		<p>
+			set echo off
+			<br/>
+			set feedback off
+			<br/>
+			set newpage none
+			<br/>
+			set pagesize 5000
+			<br/>
+			set linesize 500
+			<br/>
+			set verify off
+			<br/>
+			set pagesize 0
+			<br/>
+			set term off
+			<br/>
+			set trims on
+			<br/>
+			set linesize 600
+			<br/>
+			set heading off
+			<br/>
+			set timing off
+			<br/>
+			set verify off
+			<br/>
+			set numwidth 38
+			<br/>
+			SPOOL c:\drop_table.sql
+			<br/>
+			select DEPTNO || &#8216;,&#8217; || DNAME FROM DEPT;
+			<br/>
+			SPOOL OFF
+			<br/>
+			将上面的内容保存为一个文本文件后，以scott登录，执行该文件后显示结果：
+		</p>
+		<p>
+			10,ACCOUNTING
+			<br/>
+			20,RESEARCH
+			<br/>
+			30,SALES
+			<br/>
+			40,OPERATIONS
+		</p>
+		<p>
+			通过上面的两个例子看到，我们可以将下面的语句作为模板：
+		</p>
+		<p>
+			SPOOL c:\mySqlplusSet.sql
+			<br/>
+			set echo off
+			<br/>
+			set feedback off
+			<br/>
+			set newpage none
+			<br/>
+			set pagesize 5000
+			<br/>
+			set linesize 500
+			<br/>
+			set verify off
+			<br/>
+			set pagesize 0
+			<br/>
+			set term off
+			<br/>
+			set trims on
+			<br/>
+			set linesize 600
+			<br/>
+			set heading off
+			<br/>
+			set timing off
+			<br/>
+			set verify off
+			<br/>
+			set numwidth 38
+			<br/>
+			SPOOL OFF
+		</p>
+		<p>
+			在oracle的较新版本中，还可以用set colsep命令来实现上面的功能：
+		</p>
+		<p>
+			SQL&gt; set colsep ,
+			<br/>
+			SQL&gt; select * from dept;
+			<br/>
+			10,ACCOUNTING   ,NEW YORK
+			<br/>
+			20,RESEARCH     ,DALLAS
+			<br/>
+			30,SALES       ,CHICAGO
+			<br/>
+			40,OPERATIONS   ,BOSTON
+			<br/>
+			35,aa         ,bb
+		</p><h3 id="spool">动态生成spool命令所需的文件名。</h3>
+		<p>
+			在我们上面的例子中，spool命令所需要的文件名都是固定的。有时我们需要每天spool一次，并且每次spool的文件名都不相同，如文件名包含当天的日期，该如何实现呢？
+		</p>column dat1 new_value filename;
+		select to_char(sysdate,&#8216;yyyymmddhh24mi&#8217;) dat1 from dual;
+		spool c:\&amp;&amp;filename..txt
+		select * from dept;
+		spool off;<h3 id="WINDOWS">如何从脚本文件中得到WINDOWS环境变量的值：</h3>
+		<p>
+			在windos中：
+		</p>spool c:\temp\%ORACLE_SID%.txt
+		select * from dept;
+		...
+		spool off
+		在上面的例子中，通过%ORACLE_SID%的方式引用环境变量ORACLE_SID的值，如果ORACLE_SID的值为orcl，则生成的spool文件名为：orcl.txt。
+		<p>
+			在UNIX中：
+		</p>spool c:\temp\$ORACLE_SID.txt
+		select * from dept;
+		...
+		spool off
+		在上面的例子中，通过$ORACLE_SID的方式引用环境变量ORACLE_SID的值，如果ORACLE_SID的值为orcl，则生成的spool文件名为：orcl.txt。<h3 id="h3-6">如何指定缺省的编辑脚本的目录:</h3>
+		<p>
+			在sql*plus中，可以用save命令，将上一条执行的sql语句保存到一个文件中，但是如何设置该文件的缺省目录呢？
+		</p>
+		<p>
+			通过SQL&gt; set editfile c:\temp\file.sql 命令，可以设置其缺省目录为c:\tmpe，缺省文件名为file.sql。
+		</p><h3 id="h3-7">如何除去表中相同的行:</h3>
+		<p>
+			找到相同的行：
+		</p>
+		SELECT * FROM dept a
+		WHERE ROWID &lt;&gt; (SELECT <acronym title="ROWID">MAX</acronym>
+		FROM dept b
+		WHERE a.deptno = b.deptno
+		AND a.dname = b.dname
+		&#8212; Make sure all columns are compared
+		AND a.loc = b.loc);
+		注释：
+		<p>
+			如果只找deptno列相同的行，上面的查询可以改为：
+		</p>
+		SELECT * FROM dept a
+		WHERE ROWID &lt;&gt; (SELECT <acronym title="ROWID">MAX</acronym>
+		FROM dept b
+		WHERE a.deptno = b.deptno)
+		删除相同的行：
+		DELETE FROM dept a
+		WHERE ROWID &lt;&gt; (SELECT MAX(ROWID
+		FROM dept b
+		WHERE a.deptno = b.deptno
+		AND a.dname = b.dname
+		&#8212; Make sure all columns are compared
+		AND a.loc = b.loc);
+		注意：上面并不删除列值为null的行。<h3 id="Insertinotdeptvalues35aabbab">如何向数据库中插入两个单引号(’’):Insert inot dept values(35,’aa’’’’bb’,’a’’b’);。在插入时，用两个’表示一个’。</h3><h3 id="sqlplus">如何设置sql*plus的搜寻路径，这样在用@命令时，就不用输入文件的全路径。</h3>
+		<p>
+			设置SQLPATH环境变量。如：SQLPATH = C:\ORANT\DBS;C:\APPS\SCRIPTS;C:\MYSCRIPTS
+		</p><h3 id="h3-10"><code>
+			与</code>@的区别是什么？</h3>
+		<p>
+			@等于start命令，用来运行一个SQL脚本文件。
+		</p>
+		<p>
+			@命令调用当前目录下的，或指定全路径，或可以通过SQLPATH环境变量搜寻到的脚本文件。
+		</p>
+		<p>
+			@@用在脚本文件中，用来指定用@@执行的文件与@@所在的文件在同一目录，而不用指定全路径，也不从SQLPATH环境变量指定的路径中寻找文件，该命令一般用在嵌套脚本文件中。
+		</p><h3 id="h3-11">&amp;与&amp;&amp;的区别</h3>
+		<p>
+			&amp;用来创建一个临时变量，每当遇到这个临时变量时，都会提示你输入一个值。
+		</p>
+		<p>
+			&amp;&amp;用来创建一个持久变量，就像用用define命令或带new_vlaue字句的column命令创建的持久变量一样。当用&amp;&amp;命令引用这个变量时，不会每次遇到该变量就提示用户键入值，而只是在第一次遇到时提示一次。
+		</p>
+		<p>
+			如，将下面三行语句存为一个脚本文件，运行该脚本文件，会提示三次，让输入deptnoval的值：
+		</p>select count(*) from emp
+		where deptno = &deptnoval;
+		select count(*) from emp
+		where deptno = &deptnoval;
+		select count(*) from emp
+		where deptno = &deptnoval;
+		将下面三行语句存为一个脚本文件，运行该脚本文件，则只会提示一次，让输入deptnoval的值：select count(*) from emp
+		where deptno = &deptnoval;
+		select count(*) from emp
+		where deptno = &deptnoval;
+		select count(*) from emp
+		where deptno = &deptnoval;<h3 id="copy">引入copy的目的：</h3>
+		<p>
+			Copy命令在两个数据库之间拷贝数据时特别有用，特别是该命令可以在两个数据库之间传递long型字段的数据。
+		</p>
+		<p>
+			缺点：
+		</p>
+		<p>
+			在两个数据库之间传递数据时，有可能丢失精度(lose precision)。
+		</p><h3 id="h3-13">为什么在修改大量的行时，我的脚本会变得很慢？</h3>
+		<p>
+			当通过PL/SQL块修改一个表中的许多行时，你会创建在表上创建一个cursor，但是只有在你关闭cursor时，才会释放ROLLBACK SEGMENT，这样，当cursor仍然打开时，修改过程会变慢，这是因为数据库不得不搜寻大量的rollback segment以便于维护读一致性。为了避免这样情况，试着在表上加一个标志字段来描述该行是否已经被修改，然后关闭该cursor，然后再打开该cursor。每次可以修改5000行。
+		</p><h1 id="sqlplus2">格式化sqlplus报表</h1>
+		<p>
+			1.使用underline以及heading
+		</p>
+		<p>
+			SQL&gt; host cat /home/oracle/test/sqlplustest.sql
+			<br/>
+			set underline =
+			<br/>
+			column ename heading &#8216;Employee|Name&#8217; format A20
+			<br/>
+			column sal   heading &#8216;Employee|Salary&#8217; format L99,999
+			<br/>
+			select ename,sal from emp where deptno = 20;
+			<br/>
+			column ename clear
+			<br/>
+			column sal clear
+			<br/>
+			set underline -
+		</p>
+		<p>
+			SQL&gt; @/home/oracle/test/sqlplustest.sql
+		</p>
+		<p>
+			Employee                      Employee
+			<br/>
+			Name                            Salary
+			<br/>
+			======== =====
+			<br/>
+			SMITH                             $800
+			<br/>
+			JONES                           $2,975
+			<br/>
+			SCOTT                           $3,000
+			<br/>
+			ADAMS                           $1,100
+			<br/>
+			FORD                            $3,000
+		</p>
+		<p>
+			underline设置报表头跟数据之间的分隔符，heading设置报表的列明，如果要换行则可以使用|
+		</p>
+		<p>
+			2.使用break和compute分割数据结果并生成摘要行
+			<br/>
+			SQL&gt; host cat /home/oracle/test/sqlplustest.sql
+			<br/>
+			set pagesize 50
+			<br/>
+			break on deptno skip 1
+			<br/>
+			compute sum of sal on deptno
+			<br/>
+			select deptno,ename,sal from emp order by deptno;
+			<br/>
+			clear break
+		</p>
+		<p>
+			3.使用REPHEADER定义报表标题，REPFOOTER定义报表脚注，TTITLE定义页标题，BTITLE定义页脚
+			<br/>
+			SQL&gt; host cat /home/oracle/test/sqlplustest.sql
+			<br/>
+			set pagesize 20
+			<br/>
+			set linesize 60
+			<br/>
+			repheader right 'Begin Report'
+			<br/>
+			repfooter rigth 'End Report'
+			<br/>
+			ttitle 'Employee Report'
+			<br/>
+			btitle 'Employee Report'
+			<br/>
+			select ename,sal,deptno from emp;
+			<br/>
+			repheader off
+			<br/>
+			repfooter off
+			<br/>
+			ttitle off
+			<br/>
+			btitle off
+		</p>
+		<p>
+			SQL&gt; @/home/oracle/test/sqlplustest.sql
+		</p>
+		<p>
+			Wed Dec 05                                         page    1
+			<br/>
+			Employee Report
+		</p>                                               Begin Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		SMITH             800         20
+		ALLEN            1600         30
+		WARD             1250         30
+		JONES            2975         20
+		MARTIN           1250         30
+		BLAKE            2850         30
+		CLARK            2450         10
+		SCOTT            3000         20
+		KING             5000         10
+		TURNER           1500         30
+		ADAMS            1100         20
+		JAMES             950         30
+		Employee Report
+		<p>
+			Wed Dec 05                                         page    2
+			<br/>
+			Employee Report
+		</p>
+		<p>
+			ENAME             SAL     DEPTNO
+			<br/>
+			==== ==== ======
+			<br/>
+			FORD             3000         20
+			<br/>
+			MILLER           1300         10
+			<br/>
+			rigthEnd Report
+		</p>
+		Employee Report
+		<p>
+			14 rows selected.
+		</p>
+		<p>
+			--将页标题和页脚分别放到右边跟左边，默认是放在中间
+			<br/>
+			SQL&gt; host cat /home/oracle/test/sqlplustest.sql
+			<br/>
+			set pagesize 20
+			<br/>
+			set linesize 60
+			<br/>
+			repheader right 'Begin Report'
+			<br/>
+			repfooter right 'End Report'
+			<br/>
+			ttitle right 'imployee Report'
+			<br/>
+			btitle left 'Employee Report'
+			<br/>
+			select ename,sal,deptno from emp;
+			<br/>
+			repheader off
+			<br/>
+			repfooter off
+			<br/>
+			ttitle off
+			<br/>
+			btitle off
+		</p>
+		<p>
+			SQL&gt; @/home/oracle/test/sqlplustest.sql
+		</p>                                            imployee Report
+		Begin Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		SMITH             800         20
+		ALLEN            1600         30
+		WARD             1250         30
+		JONES            2975         20
+		MARTIN           1250         30
+		BLAKE            2850         30
+		CLARK            2450         10
+		SCOTT            3000         20
+		KING             5000         10
+		TURNER           1500         30
+		ADAMS            1100         20
+		JAMES             950         30
+		FORD             3000         20
+		MILLER           1300         10
+		Employee Report                                            imployee Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		End Report
+		<p>
+			Employee Report
+		</p>
+		<p>
+			14 rows selected.
+		</p>
+		<p>
+			4.使用spool存储打印的结果
+			<br/>
+			SQL&gt; spool /home/oracle/test/spoolout.txt
+			<br/>
+			SQL&gt; @/home/oracle/test/sqlplustest.sql
+		</p>                                            imployee Report
+		Begin Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		SMITH             800         20
+		ALLEN            1600         30
+		WARD             1250         30
+		JONES            2975         20
+		MARTIN           1250         30
+		BLAKE            2850         30
+		CLARK            2450         10
+		SCOTT            3000         20
+		KING             5000         10
+		TURNER           1500         30
+		ADAMS            1100         20
+		JAMES             950         30
+		FORD             3000         20
+		MILLER           1300         10
+		Employee Report                                            imployee Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		End Report
+		<p>
+			Employee Report
+		</p>
+		<p>
+			14 rows selected.
+		</p>
+		<p>
+			SQL&gt; spool off
+			<br/>
+			SQL&gt; !
+			<br/>
+			bash: et: command not found
+			<br/>
+			[oracle@redhat test]$ ls -la
+			<br/>
+			total 20
+			<br/>
+			drwxr-xr-x 2 oracle oinstall 4096 Dec  5 11:21 .
+			<br/>
+			drwx----&#8212; 5 oracle oinstall 4096 Dec  5 11:16 ..
+			<br/>
+			<del>rw-r</del><del>r</del>- 1 oracle oinstall 1555 Dec  5 11:21 spoolout.txt
+			<br/>
+			<del>rw-r</del><del>r</del>- 1 oracle oinstall  115 Dec  4 19:36 sqlplustest2.sql
+			<br/>
+			<del>rw-r</del><del>r</del>- 1 oracle oinstall  237 Dec  5 11:16 sqlplustest.sql
+		</p>
+		<p>
+			--查看打印结果
+			<br/>
+			[oracle@redhat test]$ cat spoolout.txt
+			<br/>
+			SQL&gt; @/home/oracle/test/sqlplustest.sql
+		</p>                                            imployee Report
+		Begin Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		SMITH             800         20
+		ALLEN            1600         30
+		WARD             1250         30
+		JONES            2975         20
+		MARTIN           1250         30
+		BLAKE            2850         30
+		CLARK            2450         10
+		SCOTT            3000         20
+		KING             5000         10
+		TURNER           1500         30
+		ADAMS            1100         20
+		JAMES             950         30
+		FORD             3000         20
+		MILLER           1300         10
+		Employee Report                                                                                        imployee Report
+		ENAME             SAL     DEPTNO
+		==== ==== ======
+		End Report
+		<p>
+			Employee Report
+		</p>
+		<p>
+			14 rows selected.
+		</p>
+		<p>
+			SQL&gt; spool off
+			<br/>
+			[oracle@redhat test]$
+		</p>
+		<p>
+			SQL&gt; host cat /home/oracle/test/sqlplustest.sql
+		</p>
+		<p>
+			使用这种方式不能把环境的设置读进来。无论是sql,还是txt，都可以通过使用@读进来。环境的设置，有时候在sql文件里不起作用，可能单独使用
+			<br/>
+			一个txt文件保存，然后，使用@format.txt来读进来。
+		</p>
+		<p>
+			TO_CHAR 是把日期或数字转换为字符串
+			<br/>
+			TO_DATE 是把字符串转换为数据库中得日期类型转换函数
+			<br/>
+			TO_NUMBER 将字符转化为数字
+		</p>
+		<p>
+			 TO_CHAR
+			<br/>
+			使用TO_CHAR函数处理数字
+			<br/>
+			TO_CHAR(number, &#8216;格式&#8217;)
+			<br/>
+			TO_CHAR(salary,’$99,999.99’);
+			<br/>
+			使用TO_CHAR函数处理日期
+			<br/>
+			TO_CHAR(date,’格式’);
+		</p>
+		<p>
+			 TO_NUMBER
+			<br/>
+			使用TO_NUMBER函数将字符转换为数字
+			<br/>
+			TO_NUMBER(char[, &#8216;格式&#8217;])
+		</p>
+		<p>
+			 TO_DATE
+			<br/>
+			使用TO_DATE函数将字符转换为日期
+			<br/>
+			TO_DATE(char[, &#8216;格式&#8217;])
+		</p>
+		<p>
+			 数字格式格式
+			<br/>
+			9 代表一个数字
+			<br/>
+			0 强制显示0
+			<br/>
+			$ 放置一个$符
+			<br/>
+			L 放置一个浮动本地货币符
+			<br/>
+			. 显示小数点
+			<br/>
+			, 显示千位指示符
+		</p>
+		<p>
+			 日期格式
+			<br/>
+			格式控制 描述
+			<br/>
+			YYYY、YYY、YY 分别代表4位、3位、2位的数字年
+			<br/>
+			YEAR 年的拼写
+			<br/>
+			MM 数字月
+			<br/>
+			MONTH 月的全拼
+			<br/>
+			MON 月的缩写
+			<br/>
+			DD 数字日
+			<br/>
+			DAY 星期的全拼
+			<br/>
+			DY 星期的缩写
+			<br/>
+			AM 表示上午或者下午
+			<br/>
+			HH24、HH12 12小时制或24小时制
+			<br/>
+			MI 分钟
+			<br/>
+			SS 秒钟
+			<br/>
+			SP 数字的拼写
+			<br/>
+			TH 数字的序数词
+		</p>
+		<p>
+			“特殊字符” 假如特殊字符
+			<br/>
+			HH24:MI:SS AM 15:43:20 PM
+		</p>
+		<p>
+			日期例子：
+			<br/>
+			SELECT TO_DATE(&#8216;2006-05-01 19:25:34&#8217;, &#8216;YYYY-MM-DD HH24:MI:SS&#8217;) FROM DUAL
+			<br/>
+			SELECT TO_DATE(&#8216;2006-05-01 19:25&#8217;, &#8216;YYYY-MM-DD HH24:MI&#8217;) FROM DUAL
+			<br/>
+			SELECT TO_DATE(&#8216;2006-05-01 19&#8217;, &#8216;YYYY-MM-DD HH24&#8217;) FROM DUAL
+			<br/>
+			SELECT TO_DATE(&#8216;2006-05-01&#8217;, &#8216;YYYY-MM-DD&#8217;) FROM DUAL
+			<br/>
+			SELECT TO_DATE(&#8216;2006-05&#8217;, &#8216;YYYY-MM&#8217;) FROM DUAL
+			<br/>
+			SELECT TO_DATE(&#8216;2006&#8217;, &#8216;YYYY&#8217;) FROM DUAL
+		</p>
+		<p>
+			日期说明：
+			<br/>
+			当省略HH、MI和SS对应的输入参数时，Oracle使用0作为DEFAULT值。如果输入的日期数据忽略时间部分，Oracle会将时、分、秒部分都置为0，也就是说会取整到日。
+		</p>
+		<p>
+			同样，忽略了DD参数，Oracle会采用1作为日的默认值，也就是说会取整到月。
+		</p>
+		<p>
+			但是，不要被这种“惯性”所迷惑，如果忽略MM参数，Oracle并不会取整到年，取整到当前月。
+		</p>
+		<p>
+			注意：
+			<br/>
+			1.在使用Oracle的to_date函数来做日期转换时，可能会直觉地采用“yyyy-MM-dd HH:mm:ss”的格式作为格式进行转换，但是在Oracle中会引起错误：“ORA 01810 格式代码出现两次”。如：select to_date(&#8216;2005-01-01 13:14:20&#8217;,&#8216;yyyy-MM-dd HH24:mm:ss&#8217;) from dual;原因是SQL中不区分大小写，MM和mm被认为是相同的格式代码，所以Oracle的SQL采用了mi代替分钟。select to_date(&#8216;2005-01-01 13:14:20&#8217;,&#8216;yyyy-MM-dd HH24:mi:ss&#8217;) from dual;
+			<br/>
+			2.另要以24小时的形式显示出来要用HH24
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-MM-dd HH24:mi:ss&#8217;) from dual;//mi是分钟
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-MM-dd HH24:mm:ss&#8217;) from dual;//mm会显示月份
+		</p>
+		<p>
+			TO_DATE格式(以时间:2007-11-02   13:45:25为例)
+		</p>       Year:
+		yy two digits 两位年                显示值:07
+		yyy three digits 三位年                显示值:007
+		yyyy four digits 四位年                显示值:2007       Month:
+		mm    number     两位月              显示值:11
+		mon    abbreviated 字符集表示          显示值:11月,若是英文版,显示nov
+		month spelled out 字符集表示          显示值:11月,若是英文版,显示november        Day:
+		dd    number         当月第几天        显示值:02
+		ddd    number         当年第几天        显示值:02
+		dy    abbreviated 当周第几天简写    显示值:星期五,若是英文版,显示fri
+		day    spelled out   当周第几天全写    显示值:星期五,若是英文版,显示friday
+		ddspth spelled out, ordinal twelfth              Hour:
+		hh    two digits 12小时进制            显示值:01
+		hh24 two digits 24小时进制            显示值:13             Minute:
+		mi    two digits 60进制                显示值:45             Second:
+		ss    two digits 60进制                显示值:25             其它
+		Q     digit         季度                  显示值:4
+		WW    digit         当年第几周            显示值:44
+		W    digit          当月第几周            显示值:1       24小时格式下时间范围为： 0:00:00 &#8211; 23:59:59....
+		12小时格式下时间范围为： 1:00:00 &#8211; 12:59:59 ....
+		<p>
+			1. 日期和字符转换函数用法（to_date,to_char）
+		</p>
+		<p>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;) as nowTime from dual;   //日期转化为字符串
+			<br/>
+			select to_char(sysdate,&#8216;yyyy&#8217;) as nowYear   from dual;   //获取时间的年
+			<br/>
+			select to_char(sysdate,&#8216;mm&#8217;)    as nowMonth from dual;   //获取时间的月
+			<br/>
+			select to_char(sysdate,&#8216;dd&#8217;)    as nowDay    from dual;   //获取时间的日
+			<br/>
+			select to_char(sysdate,&#8216;hh24&#8217;) as nowHour   from dual;   //获取时间的时
+			<br/>
+			select to_char(sysdate,&#8216;mi&#8217;)    as nowMinute from dual;   //获取时间的分
+			<br/>
+			select to_char(sysdate,&#8216;ss&#8217;)    as nowSecond from dual;   //获取时间的秒
+		</p>
+		<p>
+			select to_date(&#8216;2004-05-07 13:23:44&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;)    from dual//
+		</p>
+		<p>
+			2.
+			<br/>
+			select to_char( to_date(222,&#8216;J&#8217;),&#8216;Jsp&#8217;) from dual
+		</p>
+		显示Two Hundred Twenty-Two
+		<p>
+			3.求某天是星期几
+			<br/>
+			select to_char(to_date(&#8216;2002-08-26&#8217;,&#8216;yyyy-mm-dd&#8217;),&#8216;day&#8217;) from dual;
+			<br/>
+			星期一
+			<br/>
+			select to_char(to_date(&#8216;2002-08-26&#8217;,&#8216;yyyy-mm-dd&#8217;),&#8216;day&#8217;,&#8216;NLS_DATE_LANGUAGE = American&#8217;) from dual;
+			<br/>
+			monday
+			<br/>
+			设置日期语言
+			<br/>
+			ALTER SESSION SET NLS_DATE_LANGUAGE=&#8216;AMERICAN&#8217;;
+			<br/>
+			也可以这样
+			<br/>
+			TO_DATE (&#8216;2002-08-26&#8217;, &#8216;YYYY-mm-dd&#8217;, &#8216;NLS_DATE_LANGUAGE = American&#8217;)
+		</p>
+		<p>
+			4. 两个日期间的天数
+			<br/>
+			select floor(sysdate &#8211; to_date(&#8216;20020405&#8217;,&#8216;yyyymmdd&#8217;)) from dual;
+		</p>
+		<p>
+			5. 时间为null的用法
+			<br/>
+			select id, active_date from table1
+			<br/>
+			UNION
+			<br/>
+			select 1, TO_DATE(null) from dual;
+		</p>
+		注意要用TO_DATE(null)
+		<p>
+			6.月份差
+			<br/>
+			a_date between to_date(&#8216;20011201&#8217;,&#8216;yyyymmdd&#8217;) and to_date(&#8216;20011231&#8217;,&#8216;yyyymmdd&#8217;)
+			<br/>
+			那么12月31号中午12点之后和12月1号的12点之前是不包含在这个范围之内的。
+			<br/>
+			所以，当时间需要精确的时候，觉得to_char还是必要的
+		</p>
+		<p>
+			7. 日期格式冲突问题
+			<br/>
+			输入的格式要看你安装的ORACLE字符集的类型, 比如: US7ASCII, date格式的类型就是: &#8216;01-Jan-01&#8217;
+			<br/>
+			alter system set NLS_DATE_LANGUAGE = American
+			<br/>
+			alter session set NLS_DATE_LANGUAGE = American
+			<br/>
+			或者在to_date中写
+			<br/>
+			select to_char(to_date(&#8216;2002-08-26&#8217;,&#8216;yyyy-mm-dd&#8217;),&#8216;day&#8217;,&#8216;NLS_DATE_LANGUAGE = American&#8217;) from dual;
+			<br/>
+			注意我这只是举了NLS_DATE_LANGUAGE，当然还有很多，
+			<br/>
+			可查看
+			<br/>
+			select * from nls_session_parameters
+			<br/>
+			select * from V$NLS_PARAMETERS
+		</p>
+		<p>
+			8.
+			<br/>
+			select count(*)
+			<br/>
+			from ( select rownum-1 rnum
+			<br/>
+			from all_objects
+			<br/>
+			where rownum &lt;= to_date(&#8216;2002-02-28&#8217;,&#8216;yyyy-mm-dd&#8217;) - to_date('2002-
+			<br/>
+			02-01',&#8216;yyyy-mm-dd&#8217;)+1
+			<br/>
+			)
+			<br/>
+			where to_char( to_date(&#8216;2002-02-01&#8217;,&#8216;yyyy-mm-dd&#8217;)+rnum-1, &#8216;D&#8217; )
+			<br/>
+			not in ( &#8216;1&#8217;, &#8216;7&#8217; )
+		</p>
+		查找2002-02-28至2002-02-01间除星期一和七的天数
+		在前后分别调用DBMS_UTILITY.GET_TIME, 让后将结果相减(得到的是1/100秒, 而不是毫秒).
+		<p>
+			9. 查找月份
+			<br/>
+			select months_between(to_date(&#8216;01-31-1999&#8217;,&#8216;MM-DD-YYYY&#8217;),to_date(&#8216;12-31-1998&#8217;,&#8216;MM-DD-YYYY&#8217;)) &#8220;MONTHS&#8221; FROM DUAL;
+			<br/>
+			1
+			<br/>
+			select months_between(to_date(&#8216;02-01-1999&#8217;,&#8216;MM-DD-YYYY&#8217;),to_date(&#8216;12-31-1998&#8217;,&#8216;MM-DD-YYYY&#8217;)) &#8220;MONTHS&#8221; FROM DUAL;
+			<br/>
+			1.03225806451613
+		</p>
+		<p>
+			10. Next_day的用法
+			<br/>
+			Next_day(date, day)
+		</p>   Monday-Sunday, for format code DAY
+		Mon-Sun, for format code DY
+		1-7, for format code D
+		<p>
+			11
+			<br/>
+			select to_char(sysdate,&#8216;hh:mi:ss&#8217;) TIME from all_objects
+			<br/>
+			注意：第一条记录的TIME 与最后一行是一样的
+			<br/>
+			可以建立一个函数来处理这个问题
+			<br/>
+			create or replace function sys_date return date is
+			<br/>
+			begin
+			<br/>
+			return sysdate;
+			<br/>
+			end;
+		</p>
+		select to_char(sys_date,&#8216;hh:mi:ss&#8217;) from all_objects;
+		<p>
+			12.获得小时数
+			<br/>
+			extract()找出日期或间隔值的字段值
+			<br/>
+			SELECT <acronym title="HOUR FROM TIMESTAMP '2001-02-16 2:38:40'">EXTRACT</acronym> from offer
+			<br/>
+			SQL&gt; select sysdate ,to_char(sysdate,&#8216;hh&#8217;) from dual;
+		</p>   SYSDATE TO_CHAR(SYSDATE,&#8216;HH&#8217;)
+		-------------------- ---------------------
+		2003-10-13 19:35:21 07         SQL&gt; select sysdate ,to_char(sysdate,&#8216;hh24&#8217;) from dual;         SYSDATE TO_CHAR(SYSDATE,&#8216;HH24&#8217;)
+		-------------------- -----------------------
+		2003-10-13 19:35:21 19
+		<p>
+			13.年月日的处理
+			<br/>
+			select older_date,
+			<br/>
+			newer_date,
+			<br/>
+			years,
+			<br/>
+			months,
+			<br/>
+			abs(
+			<br/>
+			trunc(
+			<br/>
+			newer_date-
+			<br/>
+			add_months( older_date,years*12+months )
+			<br/>
+			)
+			<br/>
+			) days
+		</p>  from ( select
+		trunc(months_between( newer_date, older_date )/12) YEARS,
+		mod(trunc(months_between( newer_date, older_date )),12 ) MONTHS,
+		newer_date,
+		older_date
+		from (
+		select hiredate older_date, add_months(hiredate,rownum)+rownum newer_date
+		from emp
+		)
+		)
+		<p>
+			14.处理月份天数不定的办法
+			<br/>
+			select to_char(add_months(last_day(sysdate) +1, -2), &#8216;yyyymmdd&#8217;),last_day(sysdate) from dual
+		</p>
+		<p>
+			16.找出今年的天数
+			<br/>
+			select add_months(trunc(sysdate,&#8216;year&#8217;), 12) - trunc(sysdate,&#8216;year&#8217;) from dual
+		</p>  闰年的处理方法
+		to_char( last_day( to_date(&#8216;02&#8217;    | | :year,&#8216;mmyyyy&#8217;) ), &#8216;dd&#8217; )
+		如果是28就不是闰年
+		<p>
+			17.yyyy与rrrr的区别
+			<br/>
+			'YYYY99 TO_C
+			<br/>
+			------- ----
+			<br/>
+			yyyy 99 0099
+			<br/>
+			rrrr 99 1999
+			<br/>
+			yyyy 01 0001
+			<br/>
+			rrrr 01 2001
+		</p>
+		<p>
+			18.不同时区的处理
+			<br/>
+			select to_char( NEW_TIME( sysdate, &#8216;GMT&#8217;,&#8216;EST&#8217;), &#8216;dd/mm/yyyy hh:mi:ss&#8217;) ,sysdate
+			<br/>
+			from dual;
+		</p>
+		<p>
+			19.5秒钟一个间隔
+			<br/>
+			Select TO_DATE(<acronym title="TO_CHAR(sysdate,'SSSSS'">FLOOR</acronym>/300) * 300,&#8216;SSSSS&#8217;) ,TO_CHAR(sysdate,&#8216;SSSSS&#8217;)
+			<br/>
+			from dual
+		</p>
+		2002-11-1 9:55:00 35786
+		SSSSS表示5位秒数
+		<p>
+			20.一年的第几天
+			<br/>
+			select TO_CHAR(SYSDATE,&#8216;DDD&#8217;),sysdate from dual
+		</p>
+		310 2002-11-6 10:03:51
+		<p>
+			21.计算小时,分,秒,毫秒
+			<br/>
+			select
+			<br/>
+			Days,
+			<br/>
+			A,
+			<br/>
+			<acronym title="A*24">TRUNC</acronym> Hours,
+			<br/>
+			<acronym title="A*24*60 - 60*TRUNC(A*24">TRUNC</acronym>) Minutes,
+			<br/>
+			<acronym title="A*24*60*60 - 60*TRUNC(A*24*60">TRUNC</acronym>) Seconds,
+			<br/>
+			<acronym title="A*24*60*60*100 - 100*TRUNC(A*24*60*60">TRUNC</acronym>) mSeconds
+			<br/>
+			from
+			<br/>
+			(
+			<br/>
+			select
+			<br/>
+			trunc(sysdate) Days,
+			<br/>
+			sysdate &#8211; trunc(sysdate) A
+			<br/>
+			from dual
+			<br/>
+			)
+		</p>  select * from tabname
+		order by decode(mode,&#8216;FIFO&#8217;,1,-1)*to_char(rq,&#8216;yyyymmddhh24miss&#8217;);        //
+		floor((date2-date1) /365) 作为年
+		floor((date2-date1, 365) /30) 作为月
+		d(mod(date2-date1, 365), 30)作为日.
+		<p>
+			23.next_day函数      返回下个星期的日期,day为1-7或星期日-星期六,1表示星期日
+			<br/>
+			next_day(sysdate,6)是从当前开始下一个星期五。后面的数字是从星期日开始算起。
+			<br/>
+			1 2 3 4 5 6 7
+			<br/>
+			日 一 二 三 四 五 六
+		</p>
+		---------------------------------------------------------------   select    (sysdate-to_date(&#8216;2003-12-03 12:55:45&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))*24*60*60 from ddual
+		日期 返回的是天 然后 转换为ss
+		<p>
+			24,round[舍入到最接近的日期](day:舍入到最接近的星期日)
+			<br/>
+			select sysdate S1,
+			<br/>
+			round(sysdate) S2 ,
+			<br/>
+			round(sysdate,&#8216;year&#8217;) YEAR,
+			<br/>
+			round(sysdate,&#8216;month&#8217;) MONTH ,
+			<br/>
+			round(sysdate,&#8216;day&#8217;) DAY from dual
+		</p>
+		<p>
+			25,trunc[截断到最接近的日期,单位为天] ,返回的是日期类型
+			<br/>
+			select sysdate S1,
+			<br/>
+			trunc(sysdate) S2,                 //返回当前日期,无时分秒
+			<br/>
+			trunc(sysdate,&#8216;year&#8217;) YEAR,        //返回当前年的1月1日,无时分秒
+			<br/>
+			trunc(sysdate,&#8216;month&#8217;) MONTH ,     //返回当前月的1日,无时分秒
+			<br/>
+			trunc(sysdate,&#8216;day&#8217;) DAY           //返回当前星期的星期天,无时分秒
+			<br/>
+			from dual
+		</p>
+		<p>
+			26,返回日期列表中最晚日期
+			<br/>
+			select greatest(&#8216;01-1月-04&#8217;,&#8216;04-1月-04&#8217;,&#8216;10-2月-04&#8217;) from dual
+		</p>
+		<p>
+			27.计算时间差
+			<br/>
+			注:oracle时间差是以天数为单位,所以换算成年月,日
+		</p>     select floor(to_number(sysdate-to_date(&#8216;2007-11-02 15:55:03&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))/365) as spanYears from dual        //时间差-年
+		select ceil(moths_between(sysdate-to_date(&#8216;2007-11-02 15:55:03&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))) as spanMonths from dual        //时间差-月
+		select floor(to_number(sysdate-to_date(&#8216;2007-11-02 15:55:03&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))) as spanDays from dual             //时间差-天
+		select floor(to_number(sysdate-to_date(&#8216;2007-11-02 15:55:03&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))*24) as spanHours from dual         //时间差-时
+		select floor(to_number(sysdate-to_date(&#8216;2007-11-02 15:55:03&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))*24*60) as spanMinutes from dual    //时间差-分
+		select floor(to_number(sysdate-to_date(&#8216;2007-11-02 15:55:03&#8217;,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;))*24*60*60) as spanSeconds from dual //时间差-秒
+		<p>
+			28.更新时间
+			<br/>
+			注:oracle时间加减是以天数为单位,设改变量为n,所以换算成年月,日
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;),to_char(sysdate+n*365,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;) as newTime from dual        //改变时间-年
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;),add_months(sysdate,n) as newTime from dual                                 //改变时间-月
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;),to_char(sysdate+n,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;) as newTime from dual            //改变时间-日
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;),to_char(sysdate+n/24,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;) as newTime from dual         //改变时间-时
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;),to_char(sysdate+n/24/60,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;) as newTime from dual      //改变时间-分
+			<br/>
+			select to_char(sysdate,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;),to_char(sysdate+n/24/60/60,&#8216;yyyy-mm-dd hh24:mi:ss&#8217;) as newTime from dual   //改变时间-秒
+		</p>
+		<p>
+			29.查找月的第一天,最后一天
+			<br/>
+			SELECT Trunc(Trunc(SYSDATE, &#8216;MONTH&#8217;) - 1, &#8216;MONTH&#8217;) First_Day_Last_Month,
+			<br/>
+			Trunc(SYSDATE, &#8216;MONTH&#8217;) - 1 / 86400 Last_Day_Last_Month,
+			<br/>
+			Trunc(SYSDATE, &#8216;MONTH&#8217;) First_Day_Cur_Month,
+			<br/>
+			LAST_DAY(Trunc(SYSDATE, &#8216;MONTH&#8217;)) + 1 &#8211; 1 / 86400 Last_Day_Cur_Month
+			<br/>
+			FROM dual;
+		</p>
+		
+		<p>
+			把表格中的每一个使用如下方式写到一个文件中，假如文件名叫：format.txt,然后，使用@format.txt来运行，使得表格生效
+		</p>
+		<p>
+			col employeeid format a3 heading 'Number'
+		</p>
+		<p>
+			这里的heading使用单引号！！！
+		</p>
+		<p>
+			清空列格式：
+			<br/>
+			clear col
+		</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</div>
+		</div>
+	</body>
+</html>

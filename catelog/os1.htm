@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<!--
+		New Perspectives on JavaScript, 2nd Edition
+		Tutorial 7
+		Tutorial Case
+
+		Filename:         usconst.htm
+		Supporting files: history.css, hlogo.jpg, print.css, print.jpg,
+		toc.css, toc.js, web.jpg
+		Author : Hou, Tiejun
+		Student-ID : 1348283
+		Course : Internet-II
+		Section :
+		Date : 05/04/2015
+		Chapter 7 Tutorial
+		-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>The Constitution of the United States</title>
+
+		<link href="shblog.css" rel="stylesheet" type="text/css" />
+		<script src = "menus.js" type="text/javascript"></script>
+		<link type="text/css" title="Web" href="web.css" rel="stylesheet" />
+		<script src = "toc.js" type = "text/javascript"></script>
+
+	</head>
+
+	<body>
+		<div id="menu1" class="menu">
+			<a href="#">Java Script</a>
+		</div>
+		<div id="menu1List" class="menuList">
+			<ul>
+				<li>
+					<a href="javaScript.htm">Javascript final project</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu2" class="menu">
+			<a href="#">Operating System</a>
+		</div>
+		<div id="menu2List" class="menuList">
+			<ul>
+				<li>
+					<a href="os1.htm">Assignment 2</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu3" class="menu">
+			<a href="#">Database</a>
+		</div>
+		<div id="menu3List" class="menuList">
+			<ul>
+				<li>
+					<a href="dataBase.htm">DataBase design</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu4" class="menu">
+			<a href="#">Datastructure</a>
+		</div>
+		<div id="menu4List" class="menuList">
+			<ul>
+				<li>
+					<a href="dataStructure.htm">Assignment 1</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu5" class="menu">
+			<a href="#">Linux</a>
+		</div>
+		<div id="menu5List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Linux tips</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu6" class="menu">
+			<a href="#">Eclipse</a>
+		</div>
+		<div id="menu6List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Eclipse tips</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu7" class="menu">
+			<a href="#">Java</a>
+		</div>
+		<div id="menu7List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Thinking in Java</a>
+				</li>
+			</ul>
+		</div>
+		<div id="close">
+			<div id="toc"></div>
+
+			<div id="doc">
+			
+			
+			<h1 id="h1-1">高斯模糊算法</h1><h2 id="httpwww.ruanyifeng.comblog201211gaussianblur.html"><a href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html">参考</a></h2><h2 id="h2-2">这个算法不是本作业的重点，本作业的重点是如何调度多个线程，共同计算高斯模糊算法。 作业的最终目的是打印出来多核计算高斯算法共需多少时间。</h2><h2 id="timon">timon对高斯算法的理解</h2>
+		<ol>
+			<li>
+				权重矩阵
+				<ul>
+					<li>
+						假定中心点的坐标是（0,0），那么距离它最近的8个点的坐标如下
+					</li>
+				</ul>
+			</li>
+			<li>
+				使用高斯函数，计算权重矩阵
+				<ul>
+					<li>
+					</li>
+					<li>
+						简单表达为G(x, y) = G(x)G(y)由此，对一个二维的像素矩阵可以分别在水平与垂直方向进行一维高斯模糊其效果等同与二维高斯模糊效果。由于计算量的减少，速度却比二维高斯模糊更快。
+					</li>
+				</ul>
+			</li>
+			<li>
+				为了计算权重矩阵，需要设定σ的值。假定σ=1.5，则模糊半径为1的权重矩阵如下：
+			</li>
+			<li>
+				这9个点的权重总和等于0.4787147，如果只计算这9个点的加权平均，还必须让它们的权重之和等于1，因此上面9个值还要分别除以0.4787147，得到最终的权重矩阵。:<img border="0" src="matrix2.png"/>
+			</li>
+			<li>
+				计算高斯模糊
+				<ol>
+					<li>
+						假设现有9个像素点，灰度值（0-255）如下：
+					</li>
+					<li>
+						每个点乘以自己的权重值：
+					</li>
+					<li>
+						结果：
+					</li>
+				</ol>
+				<ul>
+					<li>
+						将这 <strong>9个值加起来</strong>，就是 <strong>中心点的高斯模糊值</strong>
+					</li>
+				</ul>
+			</li>
+			<li>
+				timon的理解，不一定非要用9个点，模糊半径是1的时候是9个点（3 &#215; 3)，在作业2中，模糊半径取得是3，是7 &#215; 7 矩阵，49个点。
+			</li>
+			<li>
+				对所有点重复上面的步骤，就得到模糊后的图像。
+			</li>
+			<li>
+				边界点的处理
+			</li>
+		</ol>
+		<p>
+			如果一个点处于边界，周边没有足够的点，怎么办？
+			<br/>
+			一个变通方法，就是把已有的点拷贝到另一面的对应位置，模拟出完整的矩阵。 (边界的处理，作业2中有具体方法。）
+		</p><h1 id="h1-2">多核调度算法</h1><h2 id="javaconcurrent">java中的concurrent 工具</h2><h4 id="java5">java 5</h4>
+		<ol>
+			<li>
+				java.util.concurrent
+			</li>
+			<li>
+				java.util.concurrent.atomic
+				<ul>
+					<li>
+						this package includes classes and interfaces which  support lock-free atomic operations on single variables
+					</li>
+				</ul>
+			</li>
+			<li>
+				java.util.concurrent.locks
+				<ul>
+					<li>
+						this package includes classes and interface for locking and waiting for conditions
+					</li>
+				</ul>
+				<ol>
+					<li>
+						interfaces:
+						<ul>
+							<li>
+								ReadWriteLock
+							</li>
+							<li>
+								condition
+							</li>
+							<li>
+								Lock
+							</li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+			<li>
+				java.util.Queue 这是一个interface, 这个interface不仅仅用于concurrent, 但是，他有几个实现类是针对concurrent的。
+				<ul>
+					<li>
+						ConcurrentLinkedqueue : an unbounded non-blocking thread-safe FIFO
+					</li>
+					<li>
+						BlockingQueue : this is an interface, defines a thread-safe blocking queue
+					</li>
+					<li>
+						BlockingDequeue: this is an interfaces , defines a thread-safe double ended queue
+					</li>
+				</ul>
+			</li>
+			<li>
+				executor framework, this framework is under java.util.concurrent package, includes several interfaces:
+				<ul>
+					<li>
+						<ul>
+							<li>
+								Callable
+							</li>
+							<li>
+								Future
+							</li>
+							<li>
+								Executor
+							</li>
+							<li>
+								ExecutorService
+							</li>
+							<li>
+								ScheduledExecutorService
+							</li>
+						</ul>
+					</li>
+					<li>
+						ThreadPoolExecutor
+					</li>
+				</ul>
+			</li>
+			<li>
+				java 5 中增加的几个同步器（Synchronizers）
+				<ul>
+					<li>
+						java.util.concurrent.CountDownLatch
+					</li>
+					<li>
+						java.util.concurrent.Semaphore
+					</li>
+					<li>
+						java.util.concurrent.Cyclicbarrier
+					</li>
+					<li>
+						java.util.concurrent.Exchanger
+					</li>
+				</ul>
+			</li>
+			<li>
+				Concurrent Collections
+				<ul>
+					<li>
+						java.util.concurrent.ConcurrentHashMap&lt;K,V&gt;
+					</li>
+					<li>
+						java.util.concurrent.CopyOnWriteArrayList&lt;K,V&gt;
+					</li>
+					<li>
+						java.util.concurrent.CopyOnWriteArraySet&lt;K,V&gt;
+					</li>
+				</ul>
+			</li>
+		</ol><h4 id="java7multicore">java 7 中， 专门对，multi-core进行了支持</h4>
+		<ol>
+			<li>
+				Fork-join framework
+				<ol>
+					<li>
+						under java.util.concurrent.forkjoin
+					</li>
+					<li>
+						Designed to minimize per-task overhead
+					</li>
+					<li>
+						ForJoinTask is a lightweight thread
+					</li>
+					<li>
+						ForkJoinPool hosts ForkJoinExecutor
+					</li>
+				</ol>
+				<ul>
+					<li>
+						use this framework, significant performance improvement can be gained.
+					</li>
+				</ul>
+			</li>
+		</ol>
+		<p>
+			通常，使用Java来开发一个简单的并发应用程序时，会创建一些Runnable对象，然后创建对应的Thread 对象来控制程序中这些线程的创建、执行以及线程的状态。自从Java 5开始引入了Executor和ExecutorService接口以及实现这两个接口的类（比如ThreadPoolExecutor）之后，使得Java在并发支持上得到了进一步的提升。
+		</p>
+		<p>
+			执行器框架（Executor Framework）将任务的创建和执行进行了分离，通过这个框架，只需要实现Runnable接口的对象和使用Executor对象，然后将Runnable对象发送给执行器。执行器再负责运行这些任务所需要的线程，包括线程的创建，线程的管理以及线程的结束。
+		</p>
+		<p>
+			Java 7则又更进了一步，它包括了ExecutorService接口的另一种实现，用来解决特殊类型的问题，它就是Fork/Join框架，有时也称分解/合并框架。
+		</p>
+		<p>
+			Fork/Join框架是用来解决能够通过分治技术（Divide and Conquer Technique）将问题拆分成小任务的问题。在一个任务中，先检查将要解决的问题的大小，如果大于一个设定的大小，那就将问题拆分成可以通过框架来执行的小任务。如果问题的大小比设定的大小要小，就可以直接在任务里解决这个问题，然后，根据需要返回任务的结果。下面的图形总结了这个原理。
+		</p>
+		<p>
+			没有固定的公式来决定问题的参考大小（Reference Size），从而决定一个任务是需要进行拆分或不需要拆分，拆分与否仍是依赖于任务本身的特性。可以使用在任务中将要处理的元素的数目和任务执行所需要的时间来决定参考大小。测试不同的参考大小来决定解决问题最好的一个方案，将ForkJoinPool类看作一个特殊的 Executor 执行器类型。这个框架基于以下两种操作。
+		</p>
+		<p>
+			Fork/Join框架和执行器框架（Executor Framework）主要的区别在于工作窃取算法（Work-Stealing Algorithm）
+		</p>
+		<p>
+			此框架核心是由下列两个类组成的
+		</p>
+		<ol>
+			<li>
+				ForkJoinPool：这个类实现了ExecutorService接口和工作窃取算法（Work-Stealing Algorithm）。它管理工作者线程，并提供任务的状态信息，以及任务的执行信息。
+			</li>
+			<li>
+				ForkJoinTask：这个类是一个将在ForkJoinPool中执行的任务的基类。 Fork/Join框架提供了在一个任务里执行fork()和join()操作的机制和控制任务状态的方法。通常，为了实现Fork/Join任务，需要实现他的两个子类中的一个：
+				<ul>
+					<li>
+						RecursiveAction：用于任务 <strong>没有返回结果</strong>的场景。
+					</li>
+					<li>
+						RecursiveTask：用于任务 <strong>有返回结果</strong>的场景。
+					</li>
+				</ul>
+			</li>
+		</ol>
+		<ol>
+			<li>
+				join/fork框架涉及3个类：
+				<ul>
+					<li>
+						业务类，真正运 <strong>算</strong>的类
+					</li>
+					<li>
+						并行处理类(Task)，根据是否要求返回值，选择继承下面两个方法的一个： 然后，重写compute()方法
+						<ul>
+							<li>
+								RecursiveAction：用于任务 <strong>没有返回结果</strong>的场景。
+							</li>
+							<li>
+								RecursiveTask：用于任务 <strong>有返回结果</strong>的场景。
+							</li>
+						</ul>
+					</li>
+					<li>
+						含有main方法的运行类，定义ForkJoinPool, 激活并行处理类。这3个类就是join/fork框架。
+					</li>
+				</ul>
+			</li>
+			<li>
+				业务类（Image），实现了高斯模糊算法， 他的核心方法是：ApplyGaussianblur(start,end), 这是compute()要调用的方法。
+			</li>
+			<li>
+				并行处理类(Task)，也就是join/fork框架的核心，需要实现compute()方法
+				<ul>
+					<li>
+						由于Task的compute()方法要调用业务类的方法，故Task类要持有业务类Image对象。
+					</li>
+					<li>
+						compute() 的结构是一个递归方法。是一个if else 结构
+					</li>
+					<li>
+						if分支是出口，是自己设定的threshold. 也就是说，当任务划分到足够小，一个线程可以瞬间处理掉的时候，就不再划分，直接调用业务类的处理方法进行处理。
+					</li>
+					<li>
+						else 分支，是任务划分的重点。在本作业中，要处理的是一个img.getHeight() *　img.getWeight()的矩阵。原来的业务方法是使用一个双层循环来处理。我的多核处理方法是：内层循环不动，把外层循环分割（也就是把纵轴按1分为2， 2分为4 。。。的方式切割）。
+					</li>
+					<li>
+						重点是起始点，结束点的确定。先找出中点，然后，上部分是start = start, end = start +　middle; 下部分是start = start + middle, end = end;
+					</li>
+					<li>
+						划分好后，使用invokeAll, 把每一个Task 激活。也可以使用Task.fork(),分别激活，效果一样（timon试验后的理解)
+					</li>
+				</ul>
+			</li>
+			<li>
+				在main方法里：
+				<ul>
+					<li>
+						定义ForkJoinPool对象，这个对象可以指定池中的线程数。
+					</li>
+					<li>
+						小技巧：使用int numProcessors = Runtime.getRuntime().availableProcessors(); 来取本机核心数
+					</li>
+					<li>
+						定义Image对象，
+					</li>
+					<li>
+						定义Task对象,把	Image对象作为初始化参数传给Task。
+					</li>
+					<li>
+						使用ForkJoinPool的对象的invoke方法，启动Task.
+					</li>
+					<li>
+						ForkJoinPool启动后，main方法这个线程会阻塞，直到所有任务都运行完。main才会继续运行。
+					</li>
+				</ul>
+			</li>
+		</ol><h2 id="h2-8">图像处理的小技巧</h2>
+		<p>
+			自己用java写图像，是先定义一个image buffer, 然后，把每个点写进去，最后，把image buffer输出到文件。本程序中，就是线程池中所有线程运行完后，调用输出程序，输出结果。
+		</p><h2 id="oraclejoinfork">oracle 官方join/fork的例子程序</h2>
+		<p>
+			/*
+		</p>
+		<ul>
+			<li>
+				Copyright &#169; 2010, 2013, Oracle and/or its affiliates. All rights reserved.
+			</li>
+		</ul>
+		<p>
+			*
+		</p>
+		<ul>
+			<li>
+				Redistribution and use in source and binary forms, with or without
+			</li>
+			<li>
+				modification, are permitted provided that the following conditions
+			</li>
+			<li>
+				are met:
+			</li>
+		</ul>
+		<p>
+			*
+		</p>
+		<ul>
+			<li>
+				- Redistributions of source code must retain the above copyright
+			</li>
+			<li>
+				notice, this list of conditions and the following disclaimer.
+			</li>
+		</ul>
+		<p>
+			*
+		</p>
+		<ul>
+			<li>
+				- Redistributions in binary form must reproduce the above copyright
+			</li>
+			<li>
+				notice, this list of conditions and the following disclaimer in the
+			</li>
+			<li>
+				documentation and/or other materials provided with the distribution.
+			</li>
+		</ul>
+		<p>
+			*
+		</p>
+		<ul>
+			<li>
+				- Neither the name of Oracle or the names of its
+			</li>
+			<li>
+				contributors may be used to endorse or promote products derived
+			</li>
+			<li>
+				from this software without specific prior written permission.
+			</li>
+		</ul>
+		<p>
+			*
+		</p>
+		<ul>
+			<li>
+				THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+			</li>
+			<li>
+				IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+			</li>
+			<li>
+				THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+			</li>
+			<li>
+				PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+			</li>
+			<li>
+				CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+			</li>
+			<li>
+				EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+			</li>
+			<li>
+				PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+			</li>
+			<li>
+				PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+			</li>
+			<li>
+				LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+			</li>
+			<li>
+				NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+			</li>
+			<li>
+				SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+			</li>
+		</ul>
+		<p>
+			*/
+		</p>
+		<p>
+			import java.awt.image.BufferedImage;
+			<br/>
+			import java.io.File;
+			<br/>
+			import java.util.concurrent.ForkJoinPool;
+			<br/>
+			import java.util.concurrent.RecursiveAction;
+			<br/>
+			import javax.imageio.ImageIO;
+		</p>
+		<p>
+			/**
+			<br/>
+			* ForkBlur implements a simple horizontal image blur. It averages pixels in the
+			<br/>
+			* source array and writes them to a destination array. The sThreshold value
+			<br/>
+			* determines whether the blurring will be performed directly or split into two
+			<br/>
+			* tasks.
+			<br/>
+			*
+			<br/>
+			* This is not the recommended way to blur images; it is only intended to
+			<br/>
+			* illustrate the use of the Fork/Join framework.
+			<br/>
+			*/
+			<br/>
+			public class ForkBlur extends RecursiveAction {
+		</p>  
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</div>
+		</div>
+	</body>
+</html>

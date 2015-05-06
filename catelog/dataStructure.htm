@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<!--
+		New Perspectives on JavaScript, 2nd Edition
+		Tutorial 7
+		Tutorial Case
+
+		Filename:         usconst.htm
+		Supporting files: history.css, hlogo.jpg, print.css, print.jpg,
+		toc.css, toc.js, web.jpg
+		Author : Hou, Tiejun
+		Student-ID : 1348283
+		Course : Internet-II
+		Section :
+		Date : 05/04/2015
+		Chapter 7 Tutorial
+		-->
+
+		<title>The Constitution of the United States</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="shblog.css" rel="stylesheet" type="text/css" />
+		<script src = "menus.js" type="text/javascript"></script>
+		<link type="text/css" title="Web" href="web.css" rel="stylesheet" />
+		<script src = "toc.js" type = "text/javascript"></script>
+
+	</head>
+
+	<body>
+		<div id="menu1" class="menu">
+			<a href="#">Java Script</a>
+		</div>
+		<div id="menu1List" class="menuList">
+			<ul>
+				<li>
+					<a href="javaScript.htm">Javascript final project</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu2" class="menu">
+			<a href="#">Operating System</a>
+		</div>
+		<div id="menu2List" class="menuList">
+			<ul>
+				<li>
+					<a href="os1.htm">Assignment 2</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu3" class="menu">
+			<a href="#">Database</a>
+		</div>
+		<div id="menu3List" class="menuList">
+			<ul>
+				<li>
+					<a href="dataBase.htm">DataBase design</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu4" class="menu">
+			<a href="#">Datastructure</a>
+		</div>
+		<div id="menu4List" class="menuList">
+			<ul>
+				<li>
+					<a href="dataStructure.htm">Assignment 1</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu5" class="menu">
+			<a href="#">Linux</a>
+		</div>
+		<div id="menu5List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Linux tips</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu6" class="menu">
+			<a href="#">Eclipse</a>
+		</div>
+		<div id="menu6List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Eclipse tips</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu7" class="menu">
+			<a href="#">Java</a>
+		</div>
+		<div id="menu7List" class="menuList">
+			<ul>
+				<li>
+					<a href="#">Thinking in Java</a>
+				</li>
+			</ul>
+		</div>
+		<div id="close">
+			<div id="toc"></div>
+
+			<div id="doc">
+			
+			
+			
+			
+			
+			<h1 id="h1-1">要完成这个作用需要的几个准备工作：</h1><ol><li>Generic</li><li>Arraylist</li><li>Stack</li><li>deep copy and shallow copy</li><li>逆波兰表示法</li><li>正则表达式</li></ol><h2 id="StackThinkinginJava">Stack (Thinking in Java)</h2><p>使用Linkedlist实现一个栈。（这本书上讲的内容，和作业要求不同。作业要求使用ArrayList实现栈。）</p><h2 id="ArrayList">ArrayList</h2><ol><li>ArrayList读快写慢（写意味着在list中间插入或删除)，LinkedList相反。而且，LinkedList支持更多操作。</li><li>ArrayList 可以看成是一个可以自增长的Array, 可以调用size()方法，看到它里面有多少个元素。</li><li>java doc 关于ArrayList</li></ol><p><a href="http://docs.oracle.com/javase/7/docs/api/">java doc</a> </p><h2 id="stack">老师关于stack的例子程序。</h2><ol><li>只需要注意一点：top = -1, 还是top = 0,如果 top = -1, 就是说,先top++,再入栈，top总是指在栈顶。如果是top = 0,就是先入栈，再top++, top总是指在栈顶之上的一个位置。</li></ol><p>/**<br/> * Implement an integer stack using an array<br/> */</p><p>public class IntStack<br/>{<br/>/**<br/> * Default array size is 50<br/> */<br/>   private static final int SIZE = 50;</p>  private int[] stack; // array to implement the stack
+   private int top; // index of the top element in the stack<p>/**<br/> * Zero-parameter constructor<br/> */<br/>   public IntStack()<br/>   {<br/>      stack = new int[SIZE];<br/>      top = -1;<br/>   }</p><p>/**<br/> * One-parameter constructor<br/> *<br/> * @param size maximum number of values on the stack<br/> */<br/>   public IntStack(int size)<br/>   {<br/>      stack = new int[size];<br/>      top = -1;<br/>   }</p><p>/**<br/> * Determines if the stack is empty or not<br/> *<br/> * @return true if the stack is empty<br/> */<br/>   public boolean isEmpty()<br/>   {<br/>      return ( top == -1 );<br/>   }</p><p>/**<br/> * Determines if the stack is full<br/> *<br/> * @return true if the stack is full<br/> */<br/>   public boolean isFull()<br/>   {<br/>      return ( top == stack.length &#8211; 1 );<br/>   }</p><p>/**<br/> * Removes the value on top of the stack<br/> *<br/> * @return value that was removed from the stack<br/> */<br/>   public int pop()<br/>   {<br/>      int temp = Integer.MIN_VALUE;</p>     if ( !isEmpty())
+      {
+         temp = stack[top];
+         top--;
+      }
+      else
+      {
+         System.out.println(&#8220;Stack is empty; Cannot pop &#8221;);
+      }
+      return temp;
+   }<p>/**<br/> * Adds a value on the stack<br/> *<br/> * @param value the new value to add to the stack<br/> */<br/>   public void push( int value )<br/>   {<br/>      if ( !isFull() )<br/>      {<br/>         top++;<br/>         stack[top] = value;<br/>      }<br/>      else<br/>      {<br/>         System.out.println(&#8220;Stack is full; cannot push &#8221;);<br/>      }<br/>   }</p><p>/**<br/> * Returns the value at the top of the stack without removing it<br/> *<br/> * @return value at the top of the stack<br/> */<br/>   public int lookUp()<br/>   {<br/>      if( ! isEmpty() )<br/>         return stack[top];<br/>      else<br/>      {<br/>         System.out.println(&#8220;Stack is empty; cannot look &#8221;);<br/>         return Integer.MIN_VALUE;<br/>      }<br/>   }<br/>}</p><h2 id="deepcopyArrayListcloneclone">deep copy 不像想像的那么简单。在ArrayList中也有clone方法，只是这种clone也是浅拷贝。要想实现真正的深拷贝，得使用序列化。这个
+问题在thinking in java 第2版有讨论，但第4版却没有讨论，很奇怪。难道这个问题在现代java中已经不存在了吗？</h2><p>我在网上得到的几个粗浅理解是：1， Object对象有clone方法。但这个方法需要每一个具体对象自己实现Cloneable接口。2，想实现真正的深拷贝，要使用序列化。但前提是，这个对象里的所有成员对象都已经实现<br/>了序列化。否则会出错。 </p><p>先暂时使用ArrayList的clone方法用浅拷贝实现这个作业，有时间时，再把thinking in java 2中的附录1看一看，了解一个深考贝的问题。</p><h2 id="h2-5">逆波兰表示法</h2><p>这个作业核心算法有两步：</p><ol><li>把正常的表达式（中序）转化成逆波兰（后序）表达式，这时，要使用一个字母栈</li><li>对这个字母栈求值，这时，需要使用一个整数栈。</li></ol><h3 id="h3-1">关于逆波兰表示法的描述</h3><p>逆波兰表示法（Reverse Polish notation，RPN，或逆波兰记法），是一种是由波兰数学家扬·武卡谢维奇1920年引入的数学表达式方式，在逆波兰记法中，所有操作符置于操作数的后面，因此也被称为后缀表示法。逆波兰记法不需要括号来标识操作符的优先级。 </p><h3 id="java">中缀表达式转后缀表达式并求值(java)</h3><p>来自网络 (经验证，算法正确,代码只能参考，里面有误。以自己的代码为准) <br/> 前缀表达式、中缀表达式和后缀表达式都是对表达式的记法，因此也被称为前缀记法、中缀记法和后缀记法。它们之间的区别在于运算符相对与操作数的位置不同：前缀表达式的运算符位于与其相关的操作数之前；中缀和后缀同理。 </p><p>举例： <br/>(3 + 4) × 5 &#8211; 6 就是中缀表达式 <br/>- × + 3 4 5 6 前缀表达式 <br/>3 4 + 5 × 6 - 后缀表达式 </p><p>中缀表达式（中缀记法） <br/>  中缀表达式是一种通用的算术或逻辑公式表示方法，操作符以中缀形式处于操作数的中间。中缀表达式是人们常用的算术表示方法。 <br/>  虽然人的大脑很容易理解与分析中缀表达式，但对计算机来说中缀表达式却是很复杂的，因此计算表达式的值时，通常需要先将中缀表达式转换为前缀或后缀表达式，然后再进行求值。对计算机来说，计算前缀或后缀表达式的值非常简单。 </p><p>前缀表达式（前缀记法、波兰式） <br/>   前缀表达式的运算符位于操作数之前。 </p><p>后缀表达式与前缀表达式类似，只是运算符位于操作数之后。 </p><p>1、将中缀表达式转换为后缀表达式：(需要一个队列，一个栈。队列用来存最终转化好的表达式，栈用来存计算过程中的中间操作符。） </p><p>(1)当读到数字直接送至输出队列中； <br/>(2)当读到运算符t时： <br/>     a.将栈中所有优先级高于或等于t的运算符弹出，送到输出队列中； <br/>　  b.t进栈； <br/>（3）读到左括号时总是将它压入栈中； <br/>（4）读到右括号时，将靠近栈顶的第一个左括号上面的运算符全部依次弹出，送至输出队列后，再丢弃左括号； <br/>（5）中缀表达式全部读完后，若栈中仍有运算符，将其送到输出队列中。 </p><p>2、 运用后缀表达式进行计算： <br/>　　 (1)建立一个栈S； <br/>　　 (2)从左到右读后缀表达式，读到数字就将它转换为数值压入栈S中，读到运算符则从栈中依次弹出两个数分别到Y和X，然后以“X 运算符 Y”的形式计算机出结果，再压加栈S中； <br/>　　 (3)如果后缀表达式未读完，就重复上面过程，最后输出栈顶的数值则为结束。 </p><p>import java.util.Stack;<br/>import java.util.regex.*;</p><p>public class StringToArithmetic {<br/>    private StringToArithmetic() {<br/>    }</p>   /**
+     * 给出一个算术表达式，返回结果。 例如 (5+8+10)*1，返回23
+     * 
+     * @param string
+     */
+    public static double stringToArithmetic(String string) {
+        return suffixToArithmetic(infixToSuffix(string));
+    }   /**
+     * 中缀表达式转后缀表达式
+     * 只处理了+,-,*,/和括号，没有处理负号及其它运算符，也没对前缀表达式验证。
+     * 如要处理负号，可对表达式进行预转义处理，当下面条件成立时，将负号换成单目运算符"!"
+     *    infix.charAt[i]'-'&&( i==0||infix.charAt[i-1]&#8216;(&#8217;)
+     */
+    private static String infixToSuffix(String infix) {
+        Stack<Character> stack = new Stack<Character>();
+        String suffix = "";
+        int length = infix.length();
+        for (int i = 0; i &lt; length; i++) {
+            Character temp;
+            char c = infix.charAt(i);
+            switch &#169; {
+            // 忽略空格
+            case &#8216; &#8217;:
+                break;
+            // 碰到&#8216;(&#8217;，push到栈
+            case &#8216;(&#8217;:
+                stack.push&#169;;
+                break;
+            // 碰到&#8216;+&#8217;&#8216;-&#8217;，将栈中所有运算符弹出，送到输出队列中
+            case &#8216;+&#8217;:
+            case &#8216;-&#8217;:
+                while (stack.size() != 0) {
+                    temp = stack.pop();
+                    if (temp == &#8216;(&#8217;) {
+                        stack.push(&#8216;(&#8217;);
+                        break;
+                    }
+                    suffix += &#8220; &#8221; + temp;
+                }
+                stack.push&#169;;
+                suffix += &#8220; &#8221;;
+                break;
+            // 碰到&#8216;*&#8217;&#8216;/&#8217;，将栈中所有乘除运算符弹出，送到输出队列中
+            case &#8216;*&#8217;:
+            case &#8216;/&#8217;:
+                while (stack.size() != 0) {
+                    temp = stack.pop();
+                    if (temp == &#8216;(&#8217; || temp == &#8216;+&#8217; || temp == &#8216;-&#8217;) {
+                        stack.push(temp);
+                        break;
+                    } else {
+                        suffix += &#8220; &#8221; + temp;
+                    }
+                }
+                stack.push&#169;;
+                suffix += &#8220; &#8221;;
+                break;
+        // 碰到右括号，将靠近栈顶的第一个左括号上面的运算符全部依次弹出，送至输出队列后，再丢弃左括号
+            case &#8216;)&#8217;:
+                while (stack.size() != 0) {
+                    temp = stack.pop();
+                    if (temp == &#8216;(&#8217;)
+                        break;
+                    else
+                        suffix += &#8220; &#8221; + temp;
+                }
+                //suffix += &#8220; &#8221;;
+                break;
+            default:
+                suffix += c;
+            }
+        }
+        while (stack.size() != 0)
+            suffix += &#8220; &#8221; + stack.pop();
+        return suffix;
+    }   public static void main(String args[]){
+         System.out.println(infixToSuffix(&#8220;3+(2-5)*6/3&#8221;));
+         System.out.println(stringToArithmetic(&#8220;3+(2-5)*6/3&#8221;));
+    }   /**
+     * 通过后缀表达式求出算术结果
+     * 
+     * @param String
+     *            postfix
+     * @return double
+     */
+    private static double suffixToArithmetic(String postfix) {
+        Pattern pattern = Pattern.compile(&#8220;\\d+||(\\d+\\.\\d+)&#8221;); // 匹配数字
+        String strings[] = postfix.split(&#8220; &#8221;);
+        for (int i = 0; i &lt; strings.length; i++)
+          strings[i].trim();
+       Stack<Double> stack = new Stack<Double>();
+        for (int i = 0; i &lt; strings.length; i++) {           if (strings[i].equals(""))
+                continue;
+            if ((pattern.matcher(strings[i])).matches()) {               stack.push(Double.parseDouble(strings[i]));
+            } else {               double y = stack.pop();
+                double x = stack.pop();
+                stack.push(caculate(x, y, strings[i]));
+            }
+        }
+        return stack.pop();   }   private static double caculate(double x, double y, String simble) {
+        if (simble.trim().equals(&#8220;+&#8221;))
+            return x + y;
+        if (simble.trim().equals(&#8220;-&#8221;))
+            return x &#8211; y;
+        if (simble.trim().equals(&#8220;*&#8221;))
+            return x * y;
+        if (simble.trim().equals(&#8220;/&#8221;))
+            return x / y;
+        return 0;
+    }
+}<h2 id="h2-6">正则表达式</h2><p>		//三步完成一次配置。首先，compile一个模板，产生一个Pattern对象<br/>		//然后，调用这个模板对象的matcher方法，产生一个Matcher对象<br/>		//最后，调用这个Matcher对象的matches方法，产生比较结果。<br/>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</div>
+		</div>
+	</body>
+</html>
